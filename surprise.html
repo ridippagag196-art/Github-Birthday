@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for Sonia ✨</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d0814; /* Deep dark purple background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #ffffff;
+            padding: 20px;
+            overflow: hidden; /* Prevent scrolling during reveal */
+        }
+
+        /* --- Click Me Section --- */
+        #reveal-container {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        #reveal-container:hover {
+            transform: scale(1.1);
+        }
+        .gift-box {
+            font-size: 6rem;
+            animation: bounce 1.5s infinite;
+            display: inline-block;
+        }
+        .click-text {
+            margin-top: 15px;
+            font-size: 1.3rem;
+            color: #ff8ebb; /* Soft pink */
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 142, 187, 0.6);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* --- Card Section --- */
+        .card-container {
+            background: linear-gradient(145deg, #231535, #160d22);
+            border-radius: 30px;
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(236, 72, 153, 0.1);
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: none; /* Hidden initially */
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        /* Reveal animation state */
+        .card-container.reveal {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stars-top {
+            color: #ff9ebb;
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 158, 187, 0.6);
+        }
+        .profile-img-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            padding: 4px; /* Space for gradient border */
+            background: linear-gradient(45deg, #ec4899, #8b5cf6); /* Pink to purple gradient */
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
+        }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #160d22; /* Dark gap */
+        }
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ff8ebb;
+            text-shadow: 0 0 15px rgba(255, 142, 187, 0.6);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #bda7d3;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .poem-box {
+            border: 1.5px solid rgba(236, 72, 153, 0.3);
+            border-radius: 20px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(5px);
+            box-shadow: inset 0 0 15px rgba(236, 72, 153, 0.05);
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #e2d7ec;
+        }
+        .poem-box p {
+            margin-bottom: 20px;
+        }
+        .poem-box p:last-of-type {
+            margin-bottom: 30px;
+        }
+        .highlight {
+            color: #ff7ebb; /* Brighter pink */
+            font-weight: 600;
+        }
+        .birthday-tag {
+            font-size: 1.1rem;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .signature {
+            font-size: 0.9rem;
+            color: #a792be;
+        }
+        .signature .friend {
+            color: #ff7ebb;
+        }
+        .footer-emojis {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.3rem;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* --- Confetti Elements --- */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="reveal-container" onclick="explodeAndShow()">
+        <div class="gift-box">🎁</div>
+        <div class="click-text">CLICK ME SONIA! 💖</div>
+    </div>
+
+    <div class="card-container" id="birthday-card">
+        <div class="stars-top">✦ ✦ ✦</div>
+        
+        <div class="profile-img-container">
+            <<img class="profile-img" src="image_0.png" onerror="this.src='image_0.png.jpeg'; this.onerror=function(){this.src='image_0.png.jpg';}" alt="Sonia">
+        </div>
+        
+        <div class="name">Sonia</div>
+        <div class="subtitle">🎂 the friend I prayed for</div>
+        
+        <div class="poem-box">
+            <p>You are the friend I once asked God for —<br>and He answered with <span class="highlight">beauty</span>.</p>
+            
+            <p>Not just the kind that stops a room,<br>but the kind that <span class="highlight">heals</span>, the kind that <span class="highlight">stays</span>.</p>
+            
+            <p>Today, I celebrate the miracle<br>that you are —<br><span class="highlight">my beautiful Sonia</span>.</p>
+            
+            <div class="birthday-tag">✦ Happy Birthday ✦</div>
+            <div class="signature">— with all my heart, <span class="friend">your friend</span></div>
+        </div>
+        
+        <div class="footer-emojis">
+            <span>🌙</span>
+            <span>❤️</span>
+            <span>🌟</span>
+        </div>
+    </div>
+
+    <script>
+        function explodeAndShow() {
+            const trigger = document.getElementById('reveal-container');
+            const card = document.getElementById('birthday-card');
+            
+            const rect = trigger.getBoundingClientRect();
+            const startX = rect.left + rect.width / 2;
+            const startY = rect.top + rect.height / 2;
+
+            // Trigger confetti blast
+            for (let i = 0; i < 150; i++) {
+                createConfettiParticle(startX, startY);
+            }
+
+            // Hide the gift box
+            trigger.style.display = 'none';
+
+            // Show the card with animation
+            card.style.display = 'block';
+            setTimeout(() => {
+                card.classList.add('reveal');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }, 50);
+        }
+
+        function createConfettiParticle(x, y) {
+            const colors = ['#ec4899', '#8b5cf6', '#ff7ebb', '#ff9ebb', '#ffeb3b', '#00e676', '#00b0ff'];
+            const p = document.createElement('div');
+            p.classList.add('confetti');
+            document.body.appendChild(p);
+
+            const size = Math.random() * 8 + 6;
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            if (Math.random() > 0.5) p.style.borderRadius = '0%'; // mix circles and squares
+
+            p.style.left = `${x}px`;
+            p.style.top = `${y}px`;
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 15 + 5;
+            let velX = Math.cos(angle) * velocity;
+            let velY = Math.sin(angle) * velocity;
+            let posX = x;
+            let posY = y;
+            let opacity = 1;
+
+            function update() {
+                posX += velX;
+                posY += velY;
+                velY += 0.3; // gravity
+                velX *= 0.98; // air resistance
+                opacity -= 0.015;
+
+                p.style.left = `${posX}px`;
+                p.style.top = `${posY}px`;
+                p.style.opacity = opacity;
+
+                if (opacity > 0) {
+                    requestAnimationFrame(update);
+                } else {
+                    p.remove();
+                }
+            }
+            requestAnimationFrame(update);
+        }
+    </script>
+</body>
+</html>
